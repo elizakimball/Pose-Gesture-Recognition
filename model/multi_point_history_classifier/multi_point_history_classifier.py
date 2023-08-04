@@ -8,7 +8,7 @@ class MultiPointHistoryClassifier(object):
     def __init__(
         self,
         model_path='model/multi_point_history_classifier/multi_point_history_classifier.tflite',
-        score_th=0.5,
+        score_th=0.7,
         invalid_value=0,
         num_threads=1,
     ):
@@ -18,10 +18,6 @@ class MultiPointHistoryClassifier(object):
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()
         self.output_details = self.interpreter.get_output_details()
-
-        # # Update the input shape to (800,)
-        # new_input_shape = (800,)
-        # self.input_details[0]['shape'] = new_input_shape
 
         self.score_th = score_th
         self.invalid_value = invalid_value
